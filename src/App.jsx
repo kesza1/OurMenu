@@ -1,6 +1,5 @@
 import './App.css'
 import { MenuList } from './components/MenuList'
-import {Button, ButtonGroup} from "@heroui/react";
 function App() {
   return (
 < div className='bg-gray-800 text-white' >
