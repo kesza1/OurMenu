@@ -1,15 +1,14 @@
+import { useState } from 'react'
 import './App.css'
 import { MenuList } from './components/MenuList'
-import {Button, ButtonGroup} from "@heroui/react";
+import { MyHeader } from './components/myHeader'
 function App() {
+  const [selectedCateg, setSelectedCateg] = useState('all')
   return (
 < div className='bg-gray-800 text-white' >
-  <header>
-    <h1 className='text-center text-3xl font-bold text-amber-400'>Our menu</h1>
-
-  </header>
+<MyHeader selectedCateg={selectedCateg} setSelectedCateg={setSelectedCateg}/>
   <main className='max-w-300 shadow-2xl p-4 mx-auto'>
-    <MenuList></MenuList>
+    <MenuList selectedCateg={selectedCateg}/>
   </main>
 </div > 
   )
