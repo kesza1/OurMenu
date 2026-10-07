@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { foods } from '../data'
+import { MyModal } from './MyModal';
 
 export const MenuList = ({selectedCateg}) => {
 const [menu , setMenu] = useState(foods)
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectedFood, setselectedFood] = useState(null)
 console.log(selectedCateg);
+
+
 
 useEffect(() =>{
   setMenu(()=>selectedCateg=='all' ? foods : foods.filter(obj=>obj.category==selectedCateg))
 }
 , [selectedCateg]
 )
+const toggle = ({ title, img }) => {
+  setselectedFood({ title, img })
+  setIsOpen(true)
+}
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 min-h-screen">
@@ -20,11 +29,12 @@ useEffect(() =>{
         >
          
           <div className="w-1/2 shrink-0">
-            <img
-              className="h-full w-full object-cover"
-              src={`/src/images/${img}`}
-              alt={title}
-            />
+           <img
+  onClick={() => toggle({ title, img })}
+  className="h-full w-full object-cover"
+  src={`/src/images/${img}`}
+  alt={title}
+/>
           </div>
 
         
@@ -47,6 +57,13 @@ useEffect(() =>{
           </div>
         </div>
       ))}
+     {isOpen && (
+  <MyModal
+    isOpen={isOpen}
+    setIsOpen={setIsOpen}
+    selectedFood={selectedFood}
+  />
+)}
     </div>
   )
 }
