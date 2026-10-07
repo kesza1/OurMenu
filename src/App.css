@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "@heroui/styles"; 
 @theme {
-    --breakpoint-brp900:900px
-    --breakpoint-brp500:500px
+    --breakpoint-brp900: 900px;
+    --breakpoint-brp500: 500px;
 }
